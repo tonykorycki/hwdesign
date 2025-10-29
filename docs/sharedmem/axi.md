@@ -54,4 +54,4 @@ You’ll be able to build powerful hardware/software systems without writing low
 
 ---
 
-Go to [Building the Vivado project](./vivado.md).
+Go to [Building the FPGA project](./fpgabuild.md).

@@ -47,4 +47,4 @@ This will use loop unrolling.  But, you can use any parameters you like.
 * The IP should be located in `/fpgademos/vector_mult/vmult_vitis/vmult_hls/`
 
 ---
-Go to [Building the Vivado project](./vivado.md).
+Go to [Understanding AXI and Memory Transfers](./axi.md).

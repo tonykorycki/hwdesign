@@ -17,6 +17,7 @@
 *.ltx
 *.srcs/
 hls/
+*_ide/
 
 # Vitis build artifacts
 *.xo

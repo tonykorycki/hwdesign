@@ -44,7 +44,9 @@ We address the data transfer into and out of IP cores in a later unit.  The data
 
 ## Building and Simulating the the Vector Multiplier
 
-The design files for this Vitis project are in the repo `hwdesign/vector_mult/vmult_vitis`.  Follow the instructions to [build the Vitis HLS project]({{ site.baseurl }}/docs/vitis_build.md) to build the project for these design files.  
+The design files for this Vitis project are in the repo `hwdesign/vector_mult/vmult_vitis`.  Follow the instructions to [create the Vitis HLS project](../../support/amd/vitis_build.md), modifyng the instructions for these design files.  
+
+One of the design files is `include/vmult.h`.
 The top of the file `include/vmult.h` provides a number of parameters that we can vary to see the effect of the optimization:
 ~~~C
 #define PIPELINE_EN 0  // Enables pipelining
@@ -54,7 +56,7 @@ The top of the file `include/vmult.h` provides a number of parameters that we ca
 ~~~
 To try different optimizations, we will simply changes the values and re-run synthesis.
 
-But, before we synthesize the Vitis IP, let's make sure that the model is functionally correct by running it against the testbench.  In the Vitis IDE GUI, go the `Flow` Panel (left sidebar) and select `C Simulation->Run`.  This will run the testbench that generates two vectors `a` and `b` and confirms that the output is expected.  Among many outputs you see in the `Output` window is `Test passed!`.
+But, before we synthesize the Vitis IP, let's make sure that the model is functionally correct by running it against the testbench.  In the Vitis IDE GUI, go the `Flow` Panel (left sidebar) and select **C Simulation->Run**.  This will run the testbench that generates two vectors `a` and `b` and confirms that the output is expected.  Among many outputs you see in the `Output` window is `Test passed!`.
 
 ---
 

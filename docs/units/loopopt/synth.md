@@ -48,7 +48,7 @@ is equivalent to setting the compiler directives as:
 ~~~
 This setting disables pipelining, meaning that all the instructions in each iteration must complete
 before the next iteration begins.
-* In the `Flow` panel (left sidebar), select `C Synthesis->Run`.
+* In the **Flow** panel (left sidebar), select **C Synthesis->Run**.
 
 The synthesis will map the C design to logic elements and build a state machine for the overall execution flow.
 The synthesis for a simple design like this takes under a minute and will generate a number of files.

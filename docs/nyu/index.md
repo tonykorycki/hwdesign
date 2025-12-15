@@ -1,4 +1,3 @@
-
 ---
 title: NYU class
 parent: Hardware Design

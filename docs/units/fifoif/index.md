@@ -5,7 +5,7 @@ nav_order: 4
 has_children: true
 ---
 
-# Interfacing the IP with the Processor
+# The Command-Response FIFO Interface
 
 In the [simple scalar function example](../scalar_fun/), the IP interfaced with the processor via a set of simple
 AXI-Lite command registers. This interface is inefficient because the processor must explicitly configure the IP

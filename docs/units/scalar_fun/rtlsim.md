@@ -28,26 +28,32 @@ an alternative open-source **VCD** or [**Value Change Dump**](https://en.wikiped
 
 The `xilinxutils` package has a simple python file that modifies the simulation files to capture the VCD output and re-runs the simulation.  You can execute it as follows:
 
-* `cd` to the directory of the Vitis IP project.  In the scalar function project, this Vitis project is in `hwdesign\scalar_fun\scalar_fun_vitis`
-* When the IP was synthesized, Vitis created a directory of the form `<component_name>/<top_name>` based on the names of the component and top-level function.  Based on the settings we used in this project, this directory is: 
-~~~bash
-    scalar_fun_vitis\hls_component\simp_fun
-~~~
-* Now we can re-run the simulation with VCD with the command:
-~~~bash
-    python xsim_vcd.py --top <top_name> [--comp <component_name>] [--out <vcd_file>]
-~~~
-where `vcdfile` is the name of the VCD file with the signal traces.  By default, `<vcd_file>` is `dump.vcd`.
-* We have not yet created a version of the script for Linux.
-* After running the script, there will be a VCD file with the simulation:
-~~~bash
-    scalar_fun_vitis\vcd\<vcd_file>
-~~~
+* [Activate the virtual environment](../../support/repo/python.md) with `xilinxutils`
+* Navigate (i.e., `cd`) to the directory of the Vitis IP project.  In the scalar function project, this Vitis project is in `hwdesign\scalar_fun\scalar_fun_vitis`
+* Identify the `component_name` and `top_name`. 
+    * When the IP was synthesized, Vitis created a directory of the form `<component_name>/<top_name>` based on the names of the component and top-level function.  Based on the settings we used in this project, this directory is: 
+    ~~~bash
+        scalar_fun_vitis\hls_component\simp_fun
+    ~~~
+    * Hence, in this example `component_name=hls_component` and `top_name=scalar_fun`
+* Re-run the simulation with VCD with the command from PowerShell or Linux terminal:
+    ~~~bash
+    (env) xsim_vcd --top <top_name> [--comp <component_name>] [--out <vcd_file>]
+    ~~~
+    where `vcdfile` is the name of the VCD file with the signal traces.  By default, `<vcd_file>` is `dump.vcd`.  In our example, you will run:
+    ~~~bash
+    (env) xsim_vcd --top sim_fun --comp hls_component --out dump.vcd
+    ~~~
+    * Note:  We have not yet created a version of the script `xsim_vcd` for Linux.
+    * After running the script, there will be a VCD file with the simulation:
+    ~~~bash
+        scalar_fun_vitis\vcd\<vcd_file>
+    ~~~
 
 ## Viewing the Timing Diagram
 After you have created VCD file, you can see the timing diagram from the [jupyter notebook](https://github.com/sdrangan/hwdesign/tree/main/scalar_fun/notebooks/view_timing.ipynb).
 
-## Understanding the `sxim_vcd.py` function. 
+## Understanding the `xsim_vcd.py` function. 
 
 Instead of using the `xsim_vcd.py` function, you can manually modify the simulation to generate the VCD files with the following steps.
 Basically, the `xsim_vcd.py` does these steps automatically.

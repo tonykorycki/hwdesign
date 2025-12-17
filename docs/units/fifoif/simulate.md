@@ -35,6 +35,25 @@ In the Flow panel (left):
     * Select the settings (gear box) in the C/RTL Simulation
     * Select `cosim.trace.all` to `all`.  This setting will trace all the outputs.
     * Select the **Run** option to run the simulation 
+* Re-run the RTL co-simulation to generate the VCD trace:
+    * Open a Windows powershell or Linux terminal
+    * [Activate the virtual environment](../../support/repo/python.md) with `xilinxutils`
+    * Navigate (i.e., `cd`) to the directory of the Vitis IP project in `hwdesign\fifoif\fifo_fun_vitis`
+    * Identify the `component_name` and `top_name`. 
+        * When the IP was synthesized, Vitis created a directory of the form `<component_name>/<top_name>` based on the names of the component and top-level function.  Based on the settings we used in this project, this directory is: 
+        ~~~bash
+            fifo_fun_vitis\hls_component\simp_fun
+        ~~~
+        * Hence, in this example `component_name=hls_component` and `top_name=scalar_fun`
+    * Re-run the simulation with VCD with the command from PowerShell or Linux terminal:
+        ~~~bash
+        (env) xsim_vcd --top sim_fun --comp hls_component --out dump.vcd
+        ~~~
+        * Note:  We have not yet created a version of the script `xsim_vcd` for Linux.
+        * After running the script, there will be a VCD file with the simulation:
+        ~~~bash
+            fifo_fun_vitis\vcd\dump.vcd
+        ~~~    
 
 ## Viewing the Command-Response Timing
 

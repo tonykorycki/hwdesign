@@ -24,30 +24,34 @@ module tb_simp_fun;
     );
 
 
+    // Test vector structure
+    typedef struct {
+        logic [WIDTH-1:0] a;
+        logic [WIDTH-1:0] b;
+    } test_vector_t;
+
     initial begin
+        // Define test vectors
+        test_vector_t test_vectors[] = '{
+            '{a: 5, b: 7},
+            '{a: 10, b: 20},
+            '{a: 100, b: 50},
+            '{a: 0, b: 0},
+            '{a: 255, b: 255}
+        };
+
         // Reset for a few cycles
         repeat (3) @(posedge clk);
         rst = 0;
 
-        // Test 1
-        a_in = 5;
-        b_in = 7;
-        @(posedge clk);
-        $display("Test 1: a_in=%0d, b_in=%0d, c_out=%0d", a_in, b_in, c_out);
-
-        
-
-        // Test 2
-        a_in = 10;
-        b_in = 20;
-        @(posedge clk);
-        $display("Test 2: a_in=%0d, b_in=%0d, c_out=%0d", a_in, b_in, c_out);
-
-        // Test 3
-        a_in = 100;
-        b_in = 50;
-        @(posedge clk);
-        $display("Test 3: a_in=%0d, b_in=%0d, c_out=%0d", a_in, b_in, c_out);
+        // Loop through test vectors
+        for (int i = 0; i < test_vectors.size(); i++) begin
+            a_in = test_vectors[i].a;
+            b_in = test_vectors[i].b;
+            @(posedge clk);
+            @(posedge clk);
+            $display("Test %0d: a_in=%0d, b_in=%0d, c_out=%0d", i+1, a_in, b_in, c_out);
+        end
 
         repeat (3) @(posedge clk);
         $finish;

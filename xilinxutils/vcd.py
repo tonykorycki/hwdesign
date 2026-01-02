@@ -141,15 +141,26 @@ class VcdParser(object):
         self.time_scale = 1e3  # default to ns
 
   
-    def add_signal(self, 
-                   name : str):
+    def add_signal(
+            self,
+            name : str,
+            short_name : str | None = None):
         """ 
         Adds a signal to be processed
+
+        Parameters
+        ----------
+        name : str
+            Full name of the signal to add.
+        short_name : str | None
+            Short name to use for the signal.  If None, the last part of the full name is used.
         """
         for s in self.vcd.signals:
             if s == name:
                 sig_info = SigInfo(name, self.vcd[s].tv, self.time_scale)
                 self.sig_info[s] = sig_info                
+                if short_name is not None:
+                    self.sig_info[s].short_name = short_name
                 return
         raise ValueError(f"Signal '{name}' not found in VCD.")
 

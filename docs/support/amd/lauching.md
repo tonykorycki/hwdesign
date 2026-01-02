@@ -7,43 +7,39 @@ has_children: false
 
 # Launching Vitis and Vivado
 
-## Launching Vivado GUI 
+## Vitis and Vivado Tools
+Both Vitis and Vivado have various tools.  For Vitis, the tools we will use in the classs are:
+- `vitis` — Launches the Vitis IDE or runs Vitis workflows from the command line.
+- `vitis-run` — Builds and runs Vitis applications, including host code and hardware kernels.  We typically use a format of the form:
+~~~bash
+    vitis-run --mode hls --tcl <tclfile.tcl>
+~~~
 
-In Windows, you launch the Vivado GUI from the **Start menu** by clicking the Windows button
- and typing "Vivado" into the search bar.
+For Vivado, the tools are:
+- `vivado` — Starts the Vivado IDE or runs synthesis/implementation scripts in batch mode.  
+- `xvlog` — Compiles Verilog/SystemVerilog source files for simulation.
+- `xelab` — Elaborates the compiled design and creates a simulation snapshot.
+- `xsim` — Runs the simulation using the snapshot, with optional GUI or batch execution.
 
-You can also start the GUI from a command terminal in either Linux or Windows as follows:
+## Launching the Vitis or Vivado GUI in Windows
 
-* In Windows, open a Command Shell, not a Powershell
+In Windows, you can run both the Vitis IDE and Vivado IDE from the **Start menu** by clicking the Windows button  and typing "Vivado" or "vitis" into the search bar.  Either operation is equivalent to running `vitis` or `vivado` from the command line.
+
+## Setting the Path for Command Line Tools
+
+To use any command line tool, you will need to set the path.
+For a Vivado command line tool:
+
+* In Windows, open a Command Shell, not a Powershell.  In Linux, open any terminal.
 * Find the path the Vivado for the version you want to use:
     * On Linux, it is likely in `/tools/Xilinx/Vivado/2025.1`  
     * On Windows, is is likely in `c:\Xilinx\2025.1\Vivado`
 * Run the settings command:
     * On Linux: `source <vivado_path>/settings64.sh`
     * On Windows: `<vivado_path>/settings64.bat` 
-* Run `vivado` from the command line.
-* The Vivado GUI should launch
-* In Windows, you can also use a Powershell, but the settings command will not set the path.
-    * For Powershell, skip runnings `settings64.bat`
-    * Directly call Vivado with
-~~~bash
-    > c:\Xilinx\2025.1\Vivado\bin\vivado.bat
-~~~
+* You can now run a command like `vivado`.
 
-## Launching Vitis 
-
-For Vitis, there are two main ways you’ll interact with the tools:
-
-* **Vitis GUI**:  A graphical IDE for designing applications, managing projects, simulating, and analyzing kernels. This is the environment you open from the Start menu or by running `vitis`.
-* **Command-line HLS compilation**:  Used for synthesizing C/C++ kernels into RTL and simulating them.
-This will typically use a format of the form:
-~~~bash
-    vitis-run --mode hls --tcl <tclfile.tcl>
-~~~
-where `tclfile.tcl` is a so-called TCL file, a scripting file that will configure the operations to be performed.
-
-To launch the Vitis GUI or `vitis` or `vitis-run` from the command line:
-
+The steps are similar for Vitis tools: 
 * Determine where the vitis tool is located:
     * In Linux: `vitis` and `vitis-run` are typically located in a directory like `/tools/Xilinx/Vitis/2025.1`
     * In Windows: `vitis` and `vitis-run` are typically located in a directory like `c:\Xilinx\2025.1\Vitis`
@@ -53,5 +49,3 @@ To launch the Vitis GUI or `vitis` or `vitis-run` from the command line:
 * Then, in the terminal run:
     * `vitis` for the Vitis GUI
     * `vitis-run --mode hls --tcl <tclfile.tcl>`
-
-

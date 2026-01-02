@@ -20,9 +20,17 @@ where the coefficients `w0`, `w1`, and `w2` are fixed and `x` is an input.
 To make this simple, suppose that all the values are 16-bit signed integers
 (so there is a chance of overflow).
 
+This function may be hard to compute in a single clock cycle.  For example, we have to first
+compute the square `x*x`, multiply it by `w2` and add it to the other terms.  So, in a single
+clock cycle we would need to complete at least two multiplies and two additions.
+The propagation delay may be too large.
+
 ## Dividing the Function over Multiple Stages
+
+To implement this more complex function, we perform the operations 
+over multiple **stages**.
 This function is implemented in `hwdesign/demos/basic_logic/poly_fun.sv`.
-We can see in the code that the funciton is implemented in 3 **stages**.
+Within this code, you can see three stages:
 
 * Stage 0:  Register the input `x_s0 <= x`
 * Stage 1:  Compute and register the square `xsq_s1 <=  x*x` and the linear term `w1_x_s1 <= w1*x`.

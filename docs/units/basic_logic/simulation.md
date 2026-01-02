@@ -25,7 +25,33 @@ It can be used as follows:
 Running this command will run several Vivado command line utilities to simulate the
 testbench.
 
+## Running the Simulation Manually
+
+The function `sv_sim` above is a python script I wrote as a wrapper around the Vivado tools
+to perform all the steps necessary for simulation.
+For this class, you can just use this function.  But, since the Vivado tool chain is constantly
+changing, you may have to modify or write a new script yourself in the future.  
+Also, you may want to modify
+the script to add on other features.  So, it is useful to understand the sequence of steps the script performs.  When you call the function as above, the [script](https://github.com/sdrangan/hwdesign/blob/main/xilinxutils/scripts/sv_sim.py), performs the
+following three functions:
+
+- `xvlog -sv simp_fun.sv tb_simp_fun.sv`:
+This command compiles (or *elaborates*) your SystemVerilog source files.
+Vivado parses the HDL, checks for syntax errors, and builds an internal representation of the design.
+The `-sv` option tells Vivado to use the SystemVerilog front‑end rather than the older Verilog‑2001 parser.
+- `xelab tb_simp_fun -s tb_simp_fun_sim -log logs/xelab`:
+This command elaborates the testbench into a runnable simulation snapshot.
+Vivado resolves all module instantiations, parameters, and hierarchy, and then produces an executable simulation image named tb_simp_fun_sim.
+You can think of this step as “linking” the compiled HDL into a simulator-ready binary.
+- `xsim tb_simp_fun_sim -t run.tcl -log logs/xsim.log`:
+This command actually runs the simulation.
+The TCL script `run.tcl` provides the simulator with instructions such as how long to run, when to start and stop dumping waveforms, and when to exit.
+It is also where the VCD file is opened and closed.
+
+
 ## Visualizing the Timing Diagram
 Once the simulation is complete, it will create a **Value-Change Dump** or VCD file
 with the trace of all the inputs.  You can then visualize that in [jupyter notebook](https://github.com/sdrangan/hwdesign/blob/main/demos/basic_logic/timing_diag.ipynb).
+
+<img src="images/timing_simp_fun.png" alt="Timing diagram" width="800"/>
 

@@ -7,7 +7,7 @@ has_children: true
 
 # Course Units
 
-A tentative set of units is as follows.  I've only added a few units so far, but I am hoping to get done by the end of the semester,
+A tentative set of units is as follows.  I've only added a few units so far, but I am hoping to get done by the end of the semester.  Problem set can also be found on the [AI Grader portal](../aiautograder/), but this website is experimental.
 
 * Course Introduction
     * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit00_course_intro/course_intro.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit00_course_intro/course_intro.pptx) 
@@ -18,8 +18,8 @@ A tentative set of units is as follows.  I've only added a few units so far, but
     * Problems:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit01_basic_logic/prob/basic_logic_prob.pdf) [[tex]](https://github.com/sdrangan/hwdesign/tree/main/units/unit01_basic_logic/prob/basic_logic_prob.tex) 
 * [Unit 2:  Bus basics and memory-mapped interfaces](./procif)
     * [Vitis HLS Example:  Simple AXI4-Lite interface](https://github.com/sdrangan/hwdesign/tree/main/demos/scalar_fun)
-    * Lecture [to be added]
-    * Problems [to be added]
+    * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit02_proc_if/proc_if.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit02_proc_if/proc_if.pptx) 
+    * Problems:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit02_proc_if/prob/procif_prob.pdf) [[tex]](https://github.com/sdrangan/hwdesign/tree/main/units/unit02_procif/prob/procif_prob.tex) 
 * [Unit 3:  Command-response FIFO interfaces](./fifoif/)
     * [Vitis HLS Example: AXI4-Streaming FIFO interface](https://github.com/sdrangan/hwdesign/tree/main/demos/fifoif)
 * [Unit 4:  Burst transfers and loop optimization](./loopopt)

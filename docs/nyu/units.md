@@ -17,7 +17,8 @@ A tentative set of units is as follows.  I've only added a few units so far, but
     * [Problems](../../units/unit01_basic_logic/prob/basic_logic.html) 
 * Unit 2:  Numeric Representations
     * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit02_numbers/numbers.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit02_numbers/numbers.pptx) 
-    * Problems:  * [Problems](../../units/unit02_numbers/prob/numbers.html) 
+    * [In-class exercise](../../units/unit02_numbers/numbers_inclass.ipynb)
+    * [Problems](../../units/unit02_numbers/prob/numbers.html)
 * Unit 3:  Bus basics and memory-mapped interfaces
     * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit03_procif/procif.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit03_procif/procif.pptx) 
     * [Vitis HLS Demo:  Simple AXI4-Lite interface](../demos/procif/)

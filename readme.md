@@ -1,4 +1,6 @@
-
+---
+nav_exclude: true
+---
 
 # Introduction to Hardware Design
 

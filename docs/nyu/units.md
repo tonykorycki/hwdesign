@@ -16,13 +16,13 @@ A tentative set of units is as follows.  I've only added a few units so far, but
     * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit01_basic_logic/basic_logic.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit01_basic_logic/basic_logic.pptx) 
     * [Problems](../../units/unit01_basic_logic/prob/basic_logic.html) 
 * Unit 2:  Sequential Logic and Finite State Machines
-    * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit02_numbers/numbers.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit02_numbers/numbers.pptx) 
+    * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit02_fsm/fsm.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit02_fsm/fsm.pptx) 
     * [SystemVerilog Demo:  Simple scalar functions](../demos/simp_fun/)
     * [Problems](../../units/unit02_fsm/prob/fsm.html) 
     * Lab:  [Division by conditional subtraction](../labs/subc/)
 * Unit 3:  Floating and Fixed Point Arithmetic
-    * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit03_fixp/fixp.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit03_fixp.pptx) 
-    * [In-class exercise](../../units/unit02_numbers/numbers_inclass.ipynb)
+    * Lecture:  [[PDF]](https://github.com/sdrangan/hwdesign/tree/main/units/unit03_fixp/fixp.pdf) [[pptx]](https://github.com/sdrangan/hwdesign/tree/main/units/unit03_fixp/fixp.pptx) 
+    * [In-class exercise](../../units/unit03_fixp/fixp_inclass.ipynb)
         <a href="https://colab.research.google.com/github/sdrangan/hwdesign/blob/main/units/unit03_fixp/fixp_inclass.ipynb" target="_blank">
         <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/> 
         </a> 

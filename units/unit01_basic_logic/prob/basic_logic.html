@@ -40,227 +40,207 @@
 <body>
     <h1>Basic Logic Questions</h1>
     <div class="question">
-        <h2>Question 1. Sequential updates</h2>
+        <h2>Question 1. Bit packing</h2>
 
-        <p>Consider the following SystemVerilog code:</p>
-
-        <pre><code>always_ff @(posedge clk) begin
-    x <= x + v;
-    if (x > 30) begin
-        v <= -10;
-    end else if (x < 0) begin
-        v <= 10;
-    end
-end
-</code></pre>
-
-        <p>
-        Starting from \( (x,v) = (15,10)\), what are the values of 
-        \( (x,v) \) for the next 5 clock cycles?
-        </p>
-        
-    </div>
-    <div class="question">
-        <h2>Question 2. Linear system</h2>
-
-        <p>Consider the following SystemVerilog code:</p>
-
-        <pre><code>always_ff @(posedge clk) begin
-    x1 <= ((5*x1 + 3*x2)>>3);
-    x2 <= ((4*x1 - 4*x2)>>3);
-end
-</code></pre>
-
-        <p>Here <code>&gt;&gt;3</code> denotes a right shift by 3 bits (division by 8), and all values are 32‑bit signed integers.</p>
-
+        <p>A designer wants a SystemVerilog 32-bit variable <code>instruction</code>
+        with three fields:
+        <ul>
+            <li><code>opcode</code>:  Bits [31:16], an operation code (opcode).</li>
+            <li><code>rega</code>: Bits [15:8], a first register address.</li>
+            <li><code>regb</code>: Bits [7:0], a second register address.</li>
+        </ul>
         <ol type="a">
-            <li>Suppose that \((x_1,x_2) = (8,0)\). What is the value of \((x_1,x_2)\) in the next clock cycle? Remember that assignments (<code>&lt;=</code>) are non‑blocking, so they update in parallel.</li>
+            <li>What data type should <code>instruction</code> have?</li>
 
-            <li>Write a Python function, say <code>sim_lin_sys</code>, that simulates this linear system with initial conditions <code>x1_0</code> and <code>x2_0</code> for <code>nit</code> clock cycles and outputs the values in an array <code>X</code> of shape <code>(nit+1, 2)</code>. The first row of <code>X</code> should be the initial conditions.</li>
+            <li>Write SystemVerilog code to extract the fields
+            <code>opcode</code>, <code>rega</code>, and <code>regb</code>
+            from <code>instruction</code> into separate variables.
+            Make sure to declare the variable types.</li>
         </ol>
         
     </div>
     <div class="question">
-        <h2>Question 3. ReLU function</h2>
+        <h2>Question 2. Two's complement</h2>
 
-            <p><strong>ReLU function:</strong> We wish to implement the function</p>
+        <p>Consider 8-bit two's-complement numbers. For each of the following decimal
+        values, write the corresponding 8-bit two's-complement <strong>binary</strong>
+        representation, meaning list the 8 bits for each number. 
+        Make sure to include leading zeros to show all 8 bits.
+        </p>
 
-            <p style="text-align:center;">
-                \( y = a x^2 + \max\{ b x, 0 \} + c \)
-            </p>
-
-            <p>
-                for an input <code>x</code> and constants <code>a</code>, <code>b</code>, and <code>c</code>.
-                Write the SystemVerilog code to implement this function over two clock cycles.
-                Specifically, the input <code>x</code> should be registered in the first clock cycle,
-                and the output <code>y</code> should be produced in the second clock cycle.
-                Make sure that no clock cycle requires two or more multiplications that cannot be parallelized.
-                You do not need to include the module declaration, or declaration
-                of variables; just the
-                <code>always_ff</code> and <code>always_comb</code> blocks.
-            </p>
+        <ol type="a">
+            <li>+13</li>
+            <li>-13</li>
+            <li>+64</li>
+            <li>-64</li>
+            <li>-1</li>
+        </ol>
         
     </div>
     <div class="question">
-        <h2>Question 4. ReLU+quadratic</h2>
+        <h2>Question 3. Literals to binary</h2>
 
-            <p>Consider the following SystemVerilog code:</p>
+            <p>
+                Convert each of the following SystemVerilog literals into their
+                8-bit binary values. For negative values, give the 8-bit two's-complement
+                representation.
+            </p>
 
-            <pre><code>always_comb begin
-    act_in = w1*xreg + b1;
-    if (act_in > 0) begin
-        a = act_in;
-    end else begin
-        a = 0;
-    end
-    xsq = ((xreg*xreg) >> 2);
-    y = xsq + w2*a + b2;
-end
+            <ol type="a">
+                <li>8'd13</li>
+                <li>8'hF2</li>
+                <li>-5</li>
+                <li>8'd-20</li>
+                <li>8'h7F</li>
+            </ol>
+        
+    </div>
+    <div class="question">
+        <h2>Question 4. Truncation</h2>
 
-always_ff @(posedge clk) begin
-    xreg <= x;
-end
+            <p>
+                Truncate the following numbers to 4 bits in both unsigned and signed
+                representations. Provide the decimal value of the truncated numbers in each case.
+            </p>
+
+            <ol type="a">
+                <li>9</li>
+                <li>15</li>
+                <li>23</li>
+                <li>-1</li>
+                <li>-12</li>
+            </ol>
+        
+    </div>
+    <div class="question">
+        <h2>Question 5. Addition overflow</h2>
+
+            <p>Consider the addition:</p>
+
+            <pre><code>logic signed [3:0] a = A;
+logic signed [3:0] b = B;
+logic signed [W-1:0] c;
+c = a + b;
 </code></pre>
 
             <p>
-                Here, <code>&gt;&gt; 2</code> denotes a right shift by 2 bits (division by 4).
-                The code registers the input <code>x</code> into <code>xreg</code> on each clock cycle
-                and produces the output <code>y</code> in a single clock cycle based on the registered value.
+                For each of the following values of <code>A</code>, <code>B</code>, and <code>W</code>,
+                determine the value of <code>c</code> in decimal.
             </p>
 
-            <p>
-                Assume that <code>w1</code>, <code>b1</code>, <code>w2</code>, and <code>b2</code> are constants.
-                Rewrite the code so that it operates over <strong>two clock cycles</strong>.
-                Specifically, register the input <code>x</code> on the first clock cycle,
-                and compute the output <code>y</code> two clock cycles later.
-                This requires introducing additional registers to store intermediate values.
-                You do not need to include the module declaration, or declaration
-                of variables; just the <code>always_ff</code> and <code>always_comb</code> blocks.
-            </p>
+            <ol type="a">
+                <li><code>A = 5, B = 3, W = 4</code></li>
+                <li><code>A = 5, B = 4, W = 4</code></li>
+                <li><code>A = 9, B = -7, W = 5</code></li>
+            </ol>
         
     </div>
     <div class="question">
-        <h2>Question 5. Bouncing ball</h2>
+        <h2>Question 6. Addition with multiple numbers</h2>
 
-            <p>
-                We simulate a ball moving in one-dimensional space between two walls at
-                positions <code>0</code> and <code>100</code>. The ball has a position
-                <code>x</code> and a velocity <code>v</code>. At each time step, the ball
-                first moves according to its velocity:
-            </p>
+            <p>Consider the addition:</p>
 
-            <p style="text-align:center;">
-                \( x \gets x + v \)
-            </p>
-
-            <p>
-                If this motion causes the ball to go past a wall, the ball “bounces” and
-                reverses direction. The bounce should behave the same way a real ball would:
-                the ball cannot pass through the wall, and the rebound distance should be
-                consistent with how far it would have travelled past the wall.
-            </p>
-
-            <p>For example:</p>
-
-            <ul>
-                <li>
-                    If \((x,v) = (40,10)\), then the ball moves to \(50\), which is inside
-                    the interval, so the next state is \((50,10)\).
-                </li>
-
-                <li>
-                    If \((x,v) = (96,10)\), then the ball would move to \(106\), which is
-                    past the right wall at \(100\). After bouncing, the ball ends up at
-                    position \(94\) with velocity \(-10\).
-                </li>
-
-                <li>
-                    If \((x,v) = (3,-10)\), then the ball would move to \(-7\), which is
-                    past the left wall at \(0\). After bouncing, the ball ends up at
-                    position \(7\) with velocity \(10\).
-                </li>
-            </ul>
-
-            <p>
-                Write the SystemVerilog code for the updates for <code>x</code> and <code>v</code>.
-                You do not need to include the module declaration, just the
-                <code>always_ff</code> and <code>always_comb</code> blocks.
-            </p>
-        
-    </div>
-    <div class="question">
-        <h2>Question 6. Exponent</h2>
-
-             <p>
-                Suppose we wish to implement the function
-            </p>
-
-            <p style="text-align:center;">
-                \( y = x^i \)
-            </p>
-
-            <p>
-                where the exponent \(i\) is an integer in the set \(\{0,1,2,3\}\).
-                The input <code>x</code> and output <code>y</code> are signed 32-bit integers
-                (you do not need to worry about overflow).
-            </p>
-
-            <p>
-                Write SystemVerilog code that computes <code>y</code>.
-                The output should always be produced exactly <strong>two cycles</strong> after the input,
-                even when \(i = 0\), \(1\), \(2\), or \(3\).
-                If two multiplications are in the same clock cycle, they must be parallelizable. 
-                You do not need to include the module declaration, or declaration
-                of variables; just the <code>always_ff</code> and <code>always_comb</code> blocks.
-            </p>
-
-            <p>
-                <strong>Hint:</strong> You will need to use delay lines to store the input
-                <code>x</code> and exponent <code>i</code>. This problem requires pipelining,
-                which we will discuss in more detail in later units.
-            </p>
-        
-    </div>
-    <div class="question">
-        <h2>Question 7. Testbench code</h2>
-
-            <p>
-                A SystemVerilog testbench instantiates an instance <code>dut</code>,
-                of the module <code>my_func</code>, to compute a function
-                \( y = f(x) \):
-            </p>
-
-            <pre><code>// Testbench signals
-logic signed [31:0] x;
-logic signed [31:0] y;
-logic clk;
-
-// Instantiate the device under test (dut)
-my_func dut (
-    .clk(clk),
-    .rst(rst),
-    .x(x),
-    .y(y)
-);
-
-// Test vectors
-logic signed [31:0] xtest [0:3] = '{10, 20, -5, 7};
+            <pre><code>logic signed [7:0] a, b, c, d;
+logic signed [W-1:0] sum = a + b + c + d;
 </code></pre>
 
-            <p>Write an <code>initial</code> block that:</p>
+            <p>
+                What value of <code>W</code> is required to ensure that no overflow
+                occurs in the sum?
+            </p>
+        
+    </div>
+    <div class="question">
+        <h2>Question 7. Multiplication overflow</h2>
 
-            <ul>
-                <li>On cycle 0, sets <code>rst = 1</code>, then de‑asserts it on the next cycle.</li>
-                <li>Starting on cycle 4, sets <code>x = xtest[0]</code> and prints the output <code>y</code> on cycle 8.</li>
-                <li>On cycle 9, sets <code>x = xtest[1]</code> and prints <code>y</code> on cycle 13.</li>
-                <li>On cycle 14, sets <code>x = xtest[2]</code> and prints <code>y</code> on cycle 18.</li>
-                <li>Continue similarly for the remaining test inputs.</li>
-            </ul>
+            <p>Consider the multiplication:</p>
 
-            <p>To display a number, you may use:</p>
-
-            <pre><code>$display("x = %0d", x);
+            <pre><code>logic signed [3:0] a = A;
+logic signed [3:0] b = B;
+logic signed [W-1:0] c;
+c = a * b;
 </code></pre>
+
+            <p>
+                For each of the following values of <code>A</code>, <code>B</code>, and <code>W</code>,
+                determine the value of <code>c</code> in decimal.
+            </p>
+
+            <ol type="a">
+                <li><code>A = 3, B = 4, W = 6</code></li>
+                <li><code>A = 7, B = 7, W = 5</code></li>
+                <li><code>A = -9, B = 5, W = 6</code></li>
+            </ol>
+        
+    </div>
+    <div class="question">
+        <h2>Question 8. Arithmetic shifts</h2>
+
+            <p>
+                Suppose <code>x</code> is the SystemVerilog variable:
+            </p>
+
+            <pre><code>logic signed [7:0] x;
+</code></pre>
+
+            <p>
+                Use arithmetic shifts to implement each of the following operations.
+                For each case, choose an appropriate signed bit-width for <code>y</code>
+                so that no bits are lost during left shifts.
+            </p>
+
+            <ol type="a">
+                <li><code>y = 4 * x</code></li>
+                <li><code>y = x / 16</code></li>
+                <li><code>y = 32 * x</code></li>
+            </ol>
+        
+    </div>
+    <div class="question">
+        <h2>Question 9. Bit growth and arithmetic</h2>
+
+            <p>
+                Consider the function:
+            </p>
+
+            <pre><code>y = 354 + x * x / 8
+</code></pre>
+
+            <p>
+                where <code>x</code> is a signed 16-bit integer (<code>logic signed [15:0] x</code>).
+            </p>
+
+            <ol type="a">
+                <li>
+                    Determine the minimum signed bit-width required for <code>y</code> so that
+                    the result never overflows for any valid 16-bit signed input <code>x</code>.
+                </li>
+
+                <li>
+                    Write a SystemVerilog module that implements this function using purely
+                    combinational logic. Be sure to declare all intermediate signals with
+                    appropriate widths.
+                </li>
+            </ol>
+        
+    </div>
+    <div class="question">
+        <h2>Question 10. AI prompt design</h2>
+
+            <p>
+            You want a combinational hardware module that implements the function:
+            </p>
+
+            <pre><code>y = max{ a0*x + b0, a1*x + b1 }
+</code></pre>
+
+            <p>
+                Write an <strong>example prompt</strong> that you could give an AI agent so that it will
+                generate a <em>single, unambiguous</em> SystemVerilog module implementing this function.
+                Your prompt must specify enough details (such as bit-widths, signedness, precision,
+                and combinational behavior) so that only one functional outcome is possible.
+                There are many correct answers — the key is to be specific.
+            </p>
         
     </div>
 </body>

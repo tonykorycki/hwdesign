@@ -26,6 +26,8 @@ def main():
                         help="Simulation directory (default: sim)")
     parser.add_argument("--keep", action="store_true",
                         help="Keep existing sim directory (default: False, deletes before running)")
+    parser.add_argument("--t", default=None,
+                        help="Optional path to a run.tcl file for xsim (if not provided, uses --runall)")
 
     args = parser.parse_args()
 
@@ -58,10 +60,11 @@ def main():
         f"-log logs/xelab.log"
     )
 
-    sim_cmd = (
-        f"xsim {top}_sim -t ../run.tcl "
-        f"-log logs/xsim.log"
-    )
+    # Build sim_cmd based on whether a tcl file is provided
+    if args.t is not None:
+        sim_cmd = f"xsim {top}_sim -t {args.t} -log logs/xsim.log"
+    else:
+        sim_cmd = f"xsim {top}_sim --runall -log logs/xsim.log"
 
     # Run commands inside sim directory
     run(vlog_cmd, cwd=sim_dir)

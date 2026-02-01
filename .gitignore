@@ -157,3 +157,7 @@ _minted-*
 
 # Minted cache directory
 _minted*/
+
+# Ignore test vector files
+test_vectors
+test_vectors/*

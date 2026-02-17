@@ -49,7 +49,8 @@ The testbench:
 - Compares the `z` from the python golden model with the implementation
 - Writes the results to a file `test_vectors/tv_sv.csv`
 
-The testbench can be run by using the `xilinxutils` function:
+The testbench can be run by using the `xilinxutils` function (if you are running the
+code on the NYU server, go to the next section):
 - Open a terminal in Unix or command window in Windows (On Windows, you cannot use Powershell)
 - Activate the virtual environment with the `xilinxutils` package
 - Follow the [instructions](../../docs/support/amd/lauching.md) to set the path for Vivado tools
@@ -60,17 +61,34 @@ The testbench can be run by using the `xilinxutils` function:
 sv_sim --source subc_divide.sv --tb tb_subc_divide.sv
 ```
 
-Note that if you are on the [NYU server](../../support/amd/nyu_remote.md), you will not have access
-to the `xilinxutils` package.  So you will have to run the command `sv_sim` directly.
-Assuming you cloned the `hwdesign` package in your home directory, run `sv_sim` as follows:
-
-```bash
-~/hwdesign/scripts/sv_sim --source subc_divide.sv --tb tb_subc_divide.sv
-```
-
 This will run the three steps in synthesizing and simulating the SV mdule.  The outputs will be stored in a CSV file, `test_outputs/tv_sv.csv`.
 
 You should see how many tests passed, and you can keep modifying the SV code until all test passed.
+I suggest that you modify the testbench to get more visibility until you pass the tests.
+
+## Running the Simulation on the NYU Server
+
+Note that if you are on the [NYU server](../../support/nyuremote/),
+you should follow the specialized [python instructions](../../support/nyuremote/python.md).
+In particular, follow those instructions to:
+- log into the server
+- clone the repository `hwdesign` to your home directory so it is at `~/hwdesign`
+- install the `uv` utility
+- create and activate a virtual environment
+- install the python package with `uv` in that environment.
+
+Once you have done these steps, you can run the script with
+
+```bash
+(hwdesign) uv run sv_sim --source subc_divide.sv --tb tb_subc_divide.sv
+```
+
+## Running the Simulation with the Vivado GUI
+
+The above flow uses command line only.  If you prefer,
+you can follow the [instructions for using the Vivado GUI](../../support/amd/sv_build.md).
+Running the GUI will create the same files.  You can also edit your
+SystemVerilog files in the Vivado editor.
 
 ---
 

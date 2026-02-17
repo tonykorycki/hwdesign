@@ -1,6 +1,6 @@
 ---
 title: Submitting the Lab
-parent: Cubic Fixed Point
+parent: Root Solver
 nav_order: 5
 has_children: true
 ---
@@ -25,10 +25,10 @@ This program will look at the test vectors and validate that the tests have pass
 The program will create a zip file `submission.zip` with:
 
 - `submitted_results.json`:  A JSON file with the test results
-- `cubic.ipynb`:  Your python implementation
-- `cubic.sv`:  Your SV implementation
-- `tb_cubic.sv`:  Your SV testbench implementation
-- `test_results/tv_....csv`:  Various test vectors
+- `fsolve.ipynb`:  Your python implementation
+- `fsolve.cpp` and `tb_fsolve.cpp`:  The Vitis HLS implementation and testbench
+- `fsolve_hist.png`:  The python graph of the trajectory of the solution
+- `test_outputs/tv_....csv`:  Various test vectors
 
 Submit this zip folder on Gradescope on the lab assignment.  A Gradescope autograder will upload the grade.  If you are on the NYU server, you will need to copy the `submission.zip`
 file back to your local machine to submit.  

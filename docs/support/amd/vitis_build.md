@@ -1,7 +1,7 @@
 ---
 title: Building a Vitis HLS project
 parent: Vitis and Vivado
-nav_order: 7
+nav_order: 8
 has_children: false
 ---
 

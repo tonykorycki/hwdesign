@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Memory-mapped and Processor Interfaces Questions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 5px;
+        }
+        .question {
+            margin-bottom: 40px;
+        }
+        pre code {
+            background-color: #f7f7f7;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 0.95em;
+            display: block;
+        }
+    </style>
+    <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["\\(", "\\)"]],
+        displayMath: [["\\[", "\\]"]]
+      }
+    };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <h1>Memory-mapped and Processor Interfaces Questions</h1>
+    <div class="question">
+        <h2>Question 1. Sizing memory</h2>
+
+        <p><strong>Sizing memory.</strong> Suppose that a communications receiver receives data at a rate of 1 Gsps (giga samples per second) from each antenna. The receiver has 4 antennas and each sample is a complex number represented by 12 bits for the real part and 12 bits for the imaginary part (24 bits per sample).</p>
+
+        <ol type="a">
+            <li>What is the total data rate in Gbps (giga bits per second) from all antennas?</li>
+            <li>Suppose there is a sample buffer of size 8 MB. How much time (in milliseconds) can the buffer hold before it is full?</li>
+            <li>Suppose that each memory can be written at a rate of 400 MHz with a bus width of 64 bits. How many such memories are needed to handle the data rate from part (a)? Assume that you cannot split a sample across multiple memories and you cannot split the real or imaginary component of a sample over multiple writes.</li>
+        </ol>
+        
+    </div>
+    <div class="question">
+        <h2>Question 2. FIR filter</h2>
+
+        <p><strong>FIR filter:</strong> Consider implementing an FIR filter or convolution. An FIR filter takes an input signal \(x[n]\), \(n=0,\ldots,N-1\) and produces an output signal \(y[n]\) via</p>
+
+        <p class="math">
+            \[
+            y[n] = \sum_{k=0}^{K-1} h[k] x[n-k]
+            \]
+        </p>
+
+        <p>where \(h[0], \ldots, h[K-1]\) are the filter coefficients. Suppose all values are 16-bit signed integers. Assume the arrays are length \(N=1000\) and the filter length is \(K=32\).</p>
+
+        <ol type="a">
+            <li>What is the number of 32-bit words needed to store \(x\), \(y\), and \(h\)?</li>
+            <li>Suppose that the filter coefficients are stored in registers, and each 32-bit word write takes 5 clock cycles to write. How many clock cycles are needed to program the filter coefficients?</li>
+            <li>Suppose that FIR filter IP can run the filter operation for \(N\) length vectors in \(N+K\) clock cycles. How many clock cycles are needed to run the filter for length \(N=1000\) vectors and \(K=32\) filter coefficients?</li>
+            <li>If the processing requires programming the filter coefficients, then running the filter, what percentage of the total time is spent programming the filter coefficients?</li>
+        </ol>
+        
+    </div>
+    <div class="question">
+        <h2>Question 3. Master-Slave Transactions</h2>
+
+        <p>For each of the following hardware transactions, identify which entity 
+        is the <em>master</em> (the initiator of the transaction) and which is 
+        the <em>slave</em> (the responder).</p>
+
+        <ol type="a">
+            <li>A processor writes an array of data to memory. Which is the master — the processor or the memory?</li>
+
+            <li>The hardware accelerator IP receives a memory address from the processor,
+            indicating where the data was written. Which is the master?</li>
+
+            <li>The hardware accelerator IP fetches input data from memory before starting computation. Which is the master?</li>
+
+            <li>During processing, the hardware IP updates a status register, and the processor periodically reads that status register. During the read, which is the master?</li>
+
+            <li>When computation completes, the hardware IP sends results to a second hardware IP. Which is the master?</li>
+        </ol>
+        
+    </div>
+    <div class="question">
+        <h2>Question 4. Ready-Valid timing</h2>
+
+        <p> A hardware module receives data from a processor using the following protocol:</p>
+
+        <ul>
+            <li>The hardware module asserts <strong>READY</strong> on any clock cycle in which it can accept a new data item.</li>
+            <li>The processor asserts <strong>VALID</strong> on the earliest cycle in which it has a new data item to send, but only if the hardware module is READY.</li>
+            <li>The processor places the data on <strong>DATA</strong> whenever VALID = 1.</li>
+            <li>A data transfer occurs on any cycle where <strong>READY = 1</strong> and <strong>VALID = 1</strong>.</li>
+            <li>After a transfer, the hardware module begins processing the data on the <em>next</em> clock cycle.</li>
+            <li>The hardware module cannot accept a new item while it is still processing the previous one.</li>
+        </ul>
+
+        <p>The processor has three data items that become available on the following cycles, and the hardware module requires the following number of cycles to process each item:</p>
+
+        <table border="1" cellpadding="4">
+            <tr><th>Data item</th><th>Earliest cycle VALID can be asserted</th><th>Processing time (cycles)</th></tr>
+            <tr><td>1</td><td>1</td><td>4</td></tr>
+            <tr><td>2</td><td>3</td><td>2</td></tr>
+            <tr><td>3</td><td>10</td><td>5</td></tr>
+        </table>
+
+        <p>Assume the hardware module is initially READY. For each data item, 
+        determine the clock cycle on which processing completes:</p>
+        <ol type="a">
+            <li>Data item 1</li>
+            <li>Data item 2</li>
+            <li>Data item 3</li>
+        </ol>
+        
+    </div>
+    <div class="question">
+        <h2>Question 5. AXI4-Lite Write</h2>
+
+        <p><strong>AXI4-Lite Write:</strong> Suppose a processor (master) writes to a hardware IP (slave) using the AXI4-Lite protocol. Assume the following AXI4-Lite write timing:</p>
+
+        <ul>
+            <li>On cycle 1, the master asserts <code>AWVALID</code> and <code>WVALID</code> with address on <code>AWADDR</code> and data on <code>WDATA</code>.</li>
+            <li>On cycle 2, the slave asserts <code>AWREADY</code>.</li>
+            <li>On cycle 3, the slave asserts <code>WREADY</code>.</li>
+            <li>There is a 2-cycle delay from the time <em>both</em> the address and data have been transferred to when the slave asserts <code>BVALID</code>.</li>
+            <li>There is a 1-cycle delay from the time <code>BVALID</code> is asserted to when the master asserts <code>BREADY</code>.</li>
+        </ul>
+
+        <p>Answer the following questions based on the timing above:</p>
+
+        <ol type="a">
+            <li>On which cycle is the address transferred on the AW channel?</li>
+            <li>On which cycle is the data transferred on the W channel?</li>
+            <li>On which cycle is <code>BVALID</code> asserted by the slave?</li>
+            <li>On which cycle is <code>BREADY</code> asserted by the master?</li>
+            <li>For each channel separately, on which cycle can the master first de-assert <code>AWVALID</code> and <code>WVALID</code>?</li>
+            <li>For each channel separately, on which cycle can the master first assert <code>AWVALID</code> and <code>WVALID</code> for the next write transaction? If the master wants to start the next write with both <code>AWVALID</code> and <code>WVALID</code> high in the same cycle, what is the earliest such cycle?</li>
+        </ol>
+        
+    </div>
+    <div class="question">
+        <h2>Question 6. AXI4-Lite Read</h2>
+
+        <p><strong>AXI4-Lite Read:</strong> A processor (master) performs a read from a hardware IP (slave) using the AXI4-Lite protocol. The following timing behavior occurs:</p>
+
+        <ul>
+            <li>Cycle 1: The master asserts <code>ARVALID</code> with the read address on <code>ARADDR</code>.</li>
+            <li>Cycle 2: The slave asserts <code>ARREADY</code>.</li>
+            <li>Cycle 3: The slave asserts <code>RVALID</code> with the read data on <code>RDATA</code>.</li>
+            <li>Cycle 4: The master asserts <code>RREADY</code>.</li>
+            <li>The slave has a 1-cycle latency from the time the address is transferred to the time it asserts <code>RVALID</code>.</li>
+            <li>The master has a 1-cycle delay from the time <code>RVALID</code> is asserted to the time it asserts <code>RREADY</code>.</li>
+        </ul>
+
+        <p>Answer the following:</p>
+
+        <ol type="a">
+            <li>On which cycle is the read address transferred?</li>
+            <li>On which cycle is the read data transferred?</li>
+            <li>On which cycle may the master de-assert <code>ARVALID</code>?</li>
+            <li>On which cycle may the slave de-assert <code>RVALID</code>?</li>
+            <li>On which cycle may the master begin the next read transaction (i.e., assert <code>ARVALID</code> for the next read)?</li>
+        </ol>
+        
+    </div>
+    <div class="question">
+        <h2>Question 7. IP interface</h2>
+
+        <p>Suppose an IP implements the iterative update:</p>
+
+        <p class="math">
+            \[
+            x[n+1] = f(x[n], a, b)
+            \]
+        </p>
+
+        <p>where \(f(x,a,b)\) is some known function, and \(a\) and \(b\) are constants.
+        The IP is given an initial value \(x[0]\) and returns the
+        final value \(x[N]\) after a specified number of iterations \(N\).
+        Assume all values are 32-bit signed integers.</p>
+
+        <ol type="a">
+            <li>
+                <p>You decide to write a Vitis HLS function to implement this IP
+                of the form:</p>
+
+                <pre><code>void diff_eq_solver(...)
+
+#pragma HLS INTERFACE s_axilite port=... bundle=CTRL_BUS
+...
+</code></pre>
+
+                <p>What arguments would you include in the function, 
+                and what <code>#pragma HLS INTERFACE</code> lines would 
+                you write below the function declaration? 
+                You do not need to write the body of the function.  Recall
+                that the format of the <code>#pragma</code> line is:
+
+                <pre><code>#pragma HLS INTERFACE s_axilite port=[port_name] bundle=CTRL_BUS
+</code></pre>
+                </p>
+            </li>
+            <li>
+                <p>Vitis HLS will automatically build the AXI4-Lite interface. 
+                Assuming it adds a 32-bit <code>AP_CTRL</code> register, 
+                what is the register map for this IP? Assume the base address 
+                is <code>0x00</code> and each register is 32 bits wide.</p>
+            </li>
+        </ol>
+        
+    </div>
+</body>
+</html>

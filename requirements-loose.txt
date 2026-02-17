@@ -97,8 +97,6 @@ python-dotenv
 python-json-logger
 python-multipart
 pytz
-pywin32
-pywinpty
 PyYAML
 pyzmq
 referencing
@@ -133,4 +131,3 @@ webcolors
 webencodings
 websocket-client
 widgetsnbextension
--e git+https://github.com/sdrangan/hwdesign.git@95e390fd37b5ed6649ce34421de4c0ed689f7d31#egg

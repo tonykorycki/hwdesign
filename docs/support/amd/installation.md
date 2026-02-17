@@ -10,10 +10,12 @@ has_children: Fakse
 ## Overview
 The labs and demos in the class use Vitis and Vivado.  You can install these
 programs free of charge on your local machine, and these pages provide some instructions.
+
 But the programs take up a lot of space.
 Also, they work well only on Windows and Ubuntu.  On MacOS, you may need to run a
-virtual environment.  So, if you are an NYU student in the class,
-you can skip these instructions and work directly on the [NYU servers](./nyu_remote.md).
+virtual machine, which can be difficult and slow.  
+As an alternative, if you are an NYU student in the class,
+you can skip these instructions and work directly on the [NYU servers](../nyuremote/).
 
 ## Selecting the version
 

@@ -71,17 +71,21 @@ def main():
     parser = argparse.ArgumentParser(description='Run autograder for Gradescope')
     parser.add_argument('--verbose', action='store_true', default=False,
                         help='Print diagnostic information (default: False)')
+    parser.add_argument('--submission', type=str, default=None,
+                        help='Alternate submission directory (default: SUBMISSION_DIR)')
     args = parser.parse_args()
     
     verbose = args.verbose
+    submission_dir = Path(args.submission) if args.submission else SUBMISSION_DIR
+    student_results = submission_dir / "submitted_results.json"
     
     if verbose:
         print(f"Detected environment: {ENV}")
         print(f"SOURCE_DIR: {SOURCE_DIR}")
-        print(f"SUBMISSION_DIR: {SUBMISSION_DIR}")
+        print(f"SUBMISSION_DIR: {submission_dir}")
         print(f"RESULTS_PATH: {RESULTS_PATH}")
         print(f"CONFIG_PATH: {CONFIG_PATH}")
-        print(f"STUDENT_RESULTS: {STUDENT_RESULTS}")
+        print(f"STUDENT_RESULTS: {student_results}")
     
     # 1. Load config
     if not CONFIG_PATH.exists():
@@ -96,7 +100,7 @@ def main():
     # 2. Check required files
     missing = []
     for fname in config["required_files"]:
-        if not (SUBMISSION_DIR / fname).exists():
+        if not (submission_dir / fname).exists():
             missing.append(fname)
 
     if missing:
@@ -104,15 +108,15 @@ def main():
         return
 
     # 3. Check results.json
-    if not STUDENT_RESULTS.exists():
+    if not student_results.exists():
         write_error("Missing results.json in student submission.", verbose)
         return
 
     # 4. Copy results.json directly to Gradescope results
     try:
-        shutil.copy(STUDENT_RESULTS, RESULTS_PATH)
+        shutil.copy(student_results, RESULTS_PATH)
         if verbose:
-            print(f"Successfully copied {STUDENT_RESULTS} to {RESULTS_PATH}")
+            print(f"Successfully copied {student_results} to {RESULTS_PATH}")
     except Exception as e:
         write_error(f"Failed to copy results.json: {e}", verbose)
         return

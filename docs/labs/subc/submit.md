@@ -15,6 +15,14 @@ run the python command:
 python submit.py
 ```
 
+If you are running Vitis and Vivado on the [NYU machine](../../support/nyuremote/),
+you should follow the [instructions](../../support/nyuremote/python.md) to set
+up **uv** and then run the python command with the `uv` utility: 
+
+```bash
+uv run python submit.py
+```
+
 This program will look at the test vectors and validate that the tests have passed.
 The program will create a zip file `submission.zip` with:
 
@@ -25,8 +33,5 @@ The program will create a zip file `submission.zip` with:
 
 Submit this zip folder on Gradescope on the lab assignment.  A Gradescope autograder will upload the grade. 
 
-If you are running Vitis and Vivado on the [NYU machine](../../support/amd/nyu_remote.md),
-you will not be able to run `python submit.py` since the python installation on that machine
-is ancient and doesn't even the package `pandas`.  So, I suggest you copy the files above
-to your local machine and run the `python submit.py` command there.
+
 

@@ -7,7 +7,7 @@ has_children: true
 
 # Basic Digital Logic
 
-In this introductory unit, we will build our first simple hardware module
+In this introductory demo, we will build our first simple hardware module
 with sequential logic.
 The module will implement a basic arithmetic function, such as multiplying two numbers or evaluating a polynomial.
 Along the way, you will learn to:

@@ -33,12 +33,13 @@ The files in the lab can be found in the hwdesign github repo
 hwdesign/
 └── labs/
     └── cubic/
-        ├── run_tests.py             # Runs unit tests and creates the submission
+        ├── run_tests.py         # Runs unit tests and creates the submission
+        ├── tb_cubic.sv          # Test bench for the SV implementation 
         ├── partial/
-        │   ├── cubic.ipynb          # Notebook for the python implementation
-        │   ├── cubic.sv             # SystemVerilog implementation
-        │   └── tb_cubic.sv          # SystemVerilog testbench
-        └── test_outputs/            # This directory will be created
+        │   ├── cubic.ipynb      # Notebook for the python implementation
+        │   ├── cubic.sv         # SystemVerilog implementation
+        │   └── tb_cubic_sing.sv      # SystemVerilog testbench for a single test case
+        └── test_outputs/        # This directory will be created
 ``` 
 
 The files in the `partial` directory are not complete.  You will complete these as part of the lab.

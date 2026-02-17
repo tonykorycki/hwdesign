@@ -1,11 +1,11 @@
 ---
-title: Building a Vivado Project
+title: Building a Vivado Project with a PS
 parent: Vitis and Vivado
-nav_order: 6
+nav_order: 7
 has_children: false
 --- 
 
-# Building a Vivado Project
+# Building a Vivado Project with a Processing System
 
 In this note, we describe how create a skeleton Vivado project that targets a specific FPGA board.
 Each board used in this class has a  **MPSoC (Multiprocessor System-on-Chip)**,
@@ -50,4 +50,7 @@ To create a Vivado project, say `scalar_fun_pynqz2`:
    * For the PYNQ-Z2 board, select `pynq-z2` or something similar
 * The Vivado window should now open with a blank project.
 * You will see a number of files including the project directory, `scalar_fun\scalar_fun_pynqz2`.
+
+You have now created a blank project with a processing system.  We will show
+how to add items, your Vitis IP.
 

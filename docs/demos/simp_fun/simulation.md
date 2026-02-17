@@ -18,12 +18,32 @@ It can be used as follows:
 * Follow the command to [set the path](../../support/amd/lauching.md) for the command-line utilities
 * [Activate the virtual environment](../../support/repo/python.md) for `xilinxutils` package
 * Run the command:
-~~~bash
+
+```bash
     (env) sv_sim --source lin_relu.sv --tb tb_lin_relu.sv
-~~~ 
+``` 
 
 Running this command will run several Vivado command line utilities to simulate the
 testbench.
+
+
+## Running the Simulation on the NYU Server
+
+Note that if you are on the [NYU server](../../support/nyuremote/),
+you should follow the specialized [python instructions](../../support/nyuremote/python.md).
+In particular, follow those instructions to:
+
+- log into the server
+- clone the repository `hwdesign` to your home directory so it is at `~/hwdesign`
+- install the `uv` utility
+- create and activate a virtual environment
+- install the python package with `uv` in that environment.
+
+Once you have done these steps, you can run the script with
+
+```bash
+uv run sv_sim --source lin_relu.sv --tb tb_lin_relu.sv
+```
 
 ## Running the Simulation Manually
 

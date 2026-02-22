@@ -1,0 +1,19 @@
+module fixp_sat_q54 (
+    input  logic signed [8:0] a,
+    input  logic signed [8:0] b,
+    output logic signed [8:0] y
+);
+
+    logic signed [17:0] prod;     // full precision
+    logic signed [17:0] ab;       // shifted result (still wide)
+
+    always_comb begin
+        prod = a * b;
+        ab   = prod >>> 4;
+
+        if (ab > 18'sd511)        y = 9'sd511;      // max
+        else if (ab < -18'sd512)  y = -9'sd512;     // min
+        else                     y = ab[8:0];
+    end
+
+endmodule

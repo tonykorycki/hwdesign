@@ -1,0 +1,38 @@
+a. to quantize: multiply number by 2^4, take binary representation
+    q_a = 5 = 7'b0000101
+    q_b = -28 = 7'b1100100
+
+b.
+
+module q74_axpb (
+    input  logic              clk,
+    input  logic signed [6:0]  x,      // Q7.4
+    output logic signed [6:0]  y       // Q7.4
+);
+
+    // Q7.4 constants
+    localparam logic signed [6:0] A_Q74 = 7'sd5;     // 0.3125 * 16
+    localparam logic signed [6:0] B_Q74 = -7'sd28;   // -1.75   * 16
+
+    logic signed [6:0]  x_reg;
+    logic signed [13:0] ax_C;        // Q14.8 product
+    logic signed [6:0]  ax_reg;      // Q7.4 after shift
+    logic signed [6:0]  y_C;
+    logic signed [6:0]  y_reg;
+
+    always_comb begin
+        ax_C = x_reg * A_Q74;        // Q7.4 * Q7.4 -> Q14.8
+        y_C  = ax_reg + B_Q74;       // Q7.4 + Q7.4 -> Q7.4 (wrap on overflow)
+    end
+
+    always_ff @(posedge clk) begin
+        x_reg  <= x;
+        ax_reg <= ax_C >>> 4;        // back to Q7.4
+        y_reg  <= y_C;
+    end
+
+    assign y = y_reg;
+
+endmodule
+
+

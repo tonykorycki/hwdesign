@@ -50,6 +50,7 @@ syn/
 impl/
 .debug/
 *.app
+*.xdc
 
 
 

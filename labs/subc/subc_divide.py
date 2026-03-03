@@ -38,3 +38,13 @@ def subc_divide(
         raise ValueError("We must have a < b and a >= 0.")
     
     # TODO: Implement the conditional subtraction division algorithm
+    z = 0
+
+    for i in range(nbits):
+        a <<= 1  # Shift a left by 1 (multiply by 2)
+        z <<= 1  # Shift z left by 1 (multiply by 2)
+        if a >= b:
+            a -= b  # Subtract b from a
+            z |= 1  # Set the least significant bit of z to 1
+
+    return z

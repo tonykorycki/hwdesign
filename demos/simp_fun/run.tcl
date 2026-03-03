@@ -1,8 +1,8 @@
 # Enable VCD dumping
-#open_vcd
-#log_vcd * 
+open_vcd
+log_vcd * 
 
 # Run the simulation
 run all
-#close_vcd
+close_vcd
 quit

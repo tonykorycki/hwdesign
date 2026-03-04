@@ -45,7 +45,7 @@ module cubic_fixed #(
     logic signed [WID_ACC-1:0] x2_s1_next, ax1_s1_next;
 
     // Stage 2 Combinational signals
-    logic signed [WID_ACC-1:0] ax2, x3, yfull;
+    logic signed [WID_ACC-1:0] ax2, x3, yfull, ytemp;
 
     // Saturation function
     function automatic logic signed [WID_ACC-1:0] sat (
@@ -67,17 +67,23 @@ module cubic_fixed #(
     // Compute next values for stage 1
     always_comb begin
 
-        // TODO:  Compute the following intermediate values
-        // x2_s1_next = ...  x squared term
-        // ax1_s1_next = ...  a1*x + a0 term
-        
+        // Stage 1 next values
+        x2_s1_next = sat((WID_ACC'(x_s0) * WID_ACC'(x_s0)) >>> FBITS);
+        ax1_s1_next = sat(((WID_ACC'(a1_s0) * WID_ACC'(x_s0)) >>> FBITS) + WID_ACC'(a0_s0));
 
         // Stage 2:  Compute cubic term and final outputs
-        // TODO:  Compute the following intermediate values
-        // ax2 = ...   a2*x^2 term
-        // x3  = ...   x^3 term
-        // yfull = ...  sum of all terms
-        // y = yfull truncated/saturated to WID bits
+        // Match Python's multi-step saturation:
+        // yint = saturate(aint[:, 0] + linear_term, wid)  <- this is ax1_s1
+        // yint = saturate(yint + quad_term, wid)
+        // yint = saturate(yint + x3int, wid)
+        
+        x3 = sat((WID_ACC'(x_s1) * x2_s1) >>> FBITS);
+        ax2 = sat((a2_s1 * x2_s1) >>> FBITS);
+        
+        // Sum with saturation after each step
+        ytemp = sat(ax1_s1 + ax2);
+        yfull = sat(ytemp + x3);
+        y = sat(yfull)[WID-1:0];
     end
 
     always_ff @(posedge clk) begin
@@ -95,16 +101,17 @@ module cubic_fixed #(
         end else begin
             // Pipeline stages
 
-            // TODO:  Stage 0: Register inputs to stage 0 registers
-            //  x_s0  <= ...
-            //  a0_s0 <= ...
-            // ...
-            
+            // Stage 0: Register inputs
+            x_s0  <= x;
+            a0_s0 <= a0;
+            a1_s0 <= a1;
+            a2_s0 <= a2;
 
-            // TODO:  Stage 1:  Register stage 1 values
-            //  a2_s1 <= ...
-            //  x_s1  <= ...
-            //  ...  
+            // Stage 1: Register computed values
+            x2_s1  <= x2_s1_next;
+            ax1_s1 <= ax1_s1_next;
+            x_s1   <= x_s0;
+            a2_s1  <= a2_s0;
               
         end
     end

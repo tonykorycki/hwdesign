@@ -24,7 +24,8 @@ module tb_cubic_sing;
     // you have implemented in `cubic.sv`.  The code belows computes
     // the expected output using real arithmetic, which may
     // differ from the fixed-point result due to truncation/rounding
-    localparam real yr_test = xr_test**3 + a2r_test*xr_test**2 + a1r_test*xr_test + a0r_test;
+    localparam real intermediate = xr_test**3 + a2r_test*xr_test**2 + a1r_test*xr_test + a0r_test;
+    localparam real yr_test = (intermediate > (2**(WID-1)-1)) ? (2**(WID-1)-1) : ((intermediate < -(2**(WID-1))) ? -(2**(WID-1)) : intermediate);
     localparam int y_test = int'(yr_test * (1 << FBITS));
 
     // DUT signals

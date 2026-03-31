@@ -158,10 +158,11 @@ int main(int argc, char** argv) {
         float x = 0.0f;
         float fx = 0.0f;
         int niter = 0;
+        float tol_x = 1e-5f;
+        float tol_fx = 1e-5f;
+        int tol_niter = 3;
         
-        // TODO:  Call the fsolve with the parameters from 
-        // the test vector and capture the outputs x, fx, and niter.
-        //   fsolve(...);
+        fsolve(tv.a0, tv.a1, tv.a2, tv.x0, tv.tol, tv.max_iter, tv.step, x, fx, niter);
      
         // Write results to output CSV file
         vitis_csv << std::setprecision(9) << std::fixed
@@ -171,11 +172,9 @@ int main(int argc, char** argv) {
               << tv.fx_expected << "," << tv.iterations_expected << ","
               << x << "," << fx << "," << niter << std::endl;
 
-        // TODO:  Compare the outputs:
-        // Set test_pass = True if and only if:
-        // 1) |x_ - tv_x_root_expected| < tol_x
-        // 2) |fx - tv_fx_expected| < tol_fx
-        // 3) |niter - tv_iterations_expected| <= tol_niter 
+        bool test_pass = (std::abs(x - tv.x_root_expected) < tol_x) &&
+                 (std::abs(fx - tv.fx_expected) < tol_fx) &&
+                 (std::abs(niter - tv.iterations_expected) <= tol_niter);
 
         // Print test results
         std::cout << "Test " << (i + 1) << ": ";
@@ -191,9 +190,12 @@ int main(int argc, char** argv) {
             fail_count++;
         }
         
-        // TODO:  Print detailed results for each test
-        // You can use this as you please to debug your code
-        // and determine what is not matching when a test fails.
+        std::cout << "  Expected: x=" << tv.x_root_expected
+                  << ", fx=" << tv.fx_expected
+                  << ", niter=" << tv.iterations_expected << std::endl;
+        std::cout << "  Got:      x=" << x
+                  << ", fx=" << fx
+                  << ", niter=" << niter << std::endl;
         
     }
 

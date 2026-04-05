@@ -4,3 +4,4 @@ not done / not sure:
 ~~[./scalar_fun](./scalar_fun)~~
 [./stream](./stream)
 [./vector_mult](./vector_mult)
+[./pipeline](./pipeline)

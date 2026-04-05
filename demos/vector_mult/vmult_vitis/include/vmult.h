@@ -8,7 +8,7 @@
 #define PIPELINE_EN 1  // Enables pipelining
 #endif
 #ifndef UNROLL_FACTOR  
-#define UNROLL_FACTOR 1  // Unrolls loops when > 1
+#define UNROLL_FACTOR 4  // Unrolls loops when > 1
 #endif
 #ifndef MAX_SIZE  
 #define MAX_SIZE 1024  // Array size to test

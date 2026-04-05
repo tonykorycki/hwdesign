@@ -3407,7 +3407,7 @@ window.onload = function () { addSorting(); }
 <center><h1>Design Guidance Report</h1></center><center><table class="header" border="0">
 <tr><td><b>Copyright</b></td><td>Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.</td></tr>
 <tr><td><b>Tool Version</b></td><td>xcd v.2025.1 (win64) Build 0 </td></tr>
-<tr><td><b>Date</b></td><td>Fri Mar 27 00:27:04 2026</td></tr>
+<tr><td><b>Date</b></td><td>Sun Apr  5 02:52:51 2026</td></tr>
 <tr><td><b>Host</b></td><td>ThinkPad_Antek running 64-bit major release  (build 9200)</td></tr>
 <tr><td><b>Command</b></td><td>C:/Xilinx/2025.1/Vitis/bin/unwrapped/win64.o/v++.exe  -c --mode hls --config C:\Users\koryc\hwdesign\demos\vector_mult\vmult_vitis\hls_component\hls_config.cfg --work_dir hls_component </td></tr>
 </table></center><br>
@@ -3416,7 +3416,7 @@ window.onload = function () { addSorting(); }
 <tr><td><a href="#VIOLATION DETAILS">2 VIOLATION DETAILS</a></tr></td>
 </table>
 <a name="REPORT SUMMARY"></a><h1>1 REPORT SUMMARY</h1>
-<pre>Violations found: 7
+<pre>Violations found: 11
 </pre>
 <pre>Rule Specs Violated: 3
 </pre>
@@ -3434,6 +3434,50 @@ window.onload = function () { addSorting(); }
 <th align="left" width="380">Resolution</th>
 </tr>
 <tr>
+<td align="left">8</td>
+<td align="left">Throughput</td>
+<td align="left">ADVISORY</td>
+<td align="left"><undefined></td>
+<td align="left">HLS Throughput Related</td>
+<td align="left">Accelerator.vec_mult.Throughput</td>
+<td align="left">Pipelining result : Target II = NA, Final II = 3, Depth = 7, loop 'output_loop'
+</td>
+<td align="left"><a href="http:///docs.xilinx.com/access/sources/dita/map?Doc_Version=2025.1%20English&url=ug1399-vitis-hls">Vitis HLS User Guide (UG1399)</a></td>
+</tr>
+<tr>
+<td align="left">10</td>
+<td align="left">Kernel</td>
+<td align="left">ADVISORY</td>
+<td align="left"><undefined></td>
+<td align="left">HLS Kernel Related</td>
+<td align="left">Accelerator.vec_mult.Kernel</td>
+<td align="left">**** Loop Constraint Status: All loop constraints were NOT satisfied.
+</td>
+<td align="left"><a href="http:///docs.xilinx.com/access/sources/dita/map?Doc_Version=2025.1%20English&url=ug1399-vitis-hls">Vitis HLS User Guide (UG1399)</a></td>
+</tr>
+<tr>
+<td align="left">9</td>
+<td align="left">Interface</td>
+<td align="left">ADVISORY</td>
+<td align="left"><undefined></td>
+<td align="left">HLS Interface Related</td>
+<td align="left">Accelerator.vec_mult.Interface</td>
+<td align="left">Design has inferred MAXI bursts and missed bursts, see Vitis HLS GUI synthesis summary report for detailed information.
+</td>
+<td align="left"><a href="http:///docs.xilinx.com/access/sources/dita/map?Doc_Version=2025.1%20English&url=ug1399-vitis-hls">Vitis HLS User Guide (UG1399)</a></td>
+</tr>
+<tr>
+<td align="left">3</td>
+<td align="left">Kernel</td>
+<td align="left">WARNING</td>
+<td align="left"><undefined></td>
+<td align="left">HLS Kernel Related</td>
+<td align="left">Accelerator.vec_mult.Kernel</td>
+<td align="left">Estimated clock period (2.580 ns) exceeds the target (target clock period: 3.333 ns, clock uncertainty: 0.900 ns, effective delay budget: 2.433 ns).
+</td>
+<td align="left"><a href="http:///docs.xilinx.com/access/sources/dita/map?Doc_Version=2025.1%20English&url=ug1399-vitis-hls">Vitis HLS User Guide (UG1399)</a></td>
+</tr>
+<tr>
 <td align="left">1</td>
 <td align="left">Interface</td>
 <td align="left">ADVISORY</td>
@@ -3445,46 +3489,61 @@ window.onload = function () { addSorting(); }
 <td align="left"><a href="http:///docs.xilinx.com/access/sources/dita/map?Doc_Version=2025.1%20English&url=ug1399-vitis-hls">Vitis HLS User Guide (UG1399)</a></td>
 </tr>
 <tr>
-<td align="left">7</td>
+<td align="left">5</td>
+<td align="left">Throughput</td>
+<td align="left">ADVISORY</td>
+<td align="left"><undefined></td>
+<td align="left">HLS Throughput Related</td>
+<td align="left">Accelerator.vec_mult.Throughput</td>
+<td align="left">Pipelining result : Target II = NA, Final II = 6, Depth = 17, loop 'mult_loop'
+</td>
+<td align="left"><a href="http:///docs.xilinx.com/access/sources/dita/map?Doc_Version=2025.1%20English&url=ug1399-vitis-hls">Vitis HLS User Guide (UG1399)</a></td>
+</tr>
+<tr>
+<td align="left">11</td>
 <td align="left">Kernel</td>
 <td align="left">ADVISORY</td>
 <td align="left"><undefined></td>
 <td align="left">HLS Kernel Related</td>
 <td align="left">Accelerator.vec_mult.Kernel</td>
-<td align="left">**** Estimated Fmax: 411.00 MHz
+<td align="left">**** Estimated Fmax: 387.56 MHz
 </td>
 <td align="left"><a href="http:///docs.xilinx.com/access/sources/dita/map?Doc_Version=2025.1%20English&url=ug1399-vitis-hls">Vitis HLS User Guide (UG1399)</a></td>
 </tr>
 <tr>
 <td align="left">6</td>
 <td align="left">Kernel</td>
-<td align="left">ADVISORY</td>
+<td align="left">WARNING</td>
 <td align="left"><undefined></td>
 <td align="left">HLS Kernel Related</td>
 <td align="left">Accelerator.vec_mult.Kernel</td>
-<td align="left">**** Loop Constraint Status: All loop constraints were NOT satisfied.
-</td>
-<td align="left"><a href="http:///docs.xilinx.com/access/sources/dita/map?Doc_Version=2025.1%20English&url=ug1399-vitis-hls">Vitis HLS User Guide (UG1399)</a></td>
-</tr>
-<tr>
-<td align="left">3</td>
-<td align="left">Throughput</td>
-<td align="left">ADVISORY</td>
-<td align="left"><undefined></td>
-<td align="left">HLS Throughput Related</td>
-<td align="left">Accelerator.vec_mult.Throughput</td>
-<td align="left">Pipelining result : Target II = NA, Final II = 2, Depth = 14, loop 'mult_loop'
+<td align="left">Estimated clock period (2.566 ns) exceeds the target (target clock period: 3.333 ns, clock uncertainty: 0.900 ns, effective delay budget: 2.433 ns).
 </td>
 <td align="left"><a href="http:///docs.xilinx.com/access/sources/dita/map?Doc_Version=2025.1%20English&url=ug1399-vitis-hls">Vitis HLS User Guide (UG1399)</a></td>
 </tr>
 <tr>
 <td align="left">4</td>
-<td align="left">Throughput</td>
-<td align="left">ADVISORY</td>
+<td align="left">Kernel</td>
+<td align="left">WARNING</td>
 <td align="left"><undefined></td>
-<td align="left">HLS Throughput Related</td>
-<td align="left">Accelerator.vec_mult.Throughput</td>
-<td align="left">Pipelining result : Target II = NA, Final II = 2, Depth = 6, loop 'output_loop'
+<td align="left">HLS Kernel Related</td>
+<td align="left">Accelerator.vec_mult.Kernel</td>
+<td align="left">The critical path in module 'vec_mult_Pipeline_input_loop' consists of the following:
+	'add' operation 63 bit ('add_ln36', <a href="file:///C:/Users/koryc/hwdesign/demos/vector_mult/vmult_vitis/hls_component\../src/vmult.cpp#line=36">vmult.cpp</a>) [37]  (2.580 ns)
+
+</td>
+<td align="left"><a href="http:///docs.xilinx.com/access/sources/dita/map?Doc_Version=2025.1%20English&url=ug1399-vitis-hls">Vitis HLS User Guide (UG1399)</a></td>
+</tr>
+<tr>
+<td align="left">7</td>
+<td align="left">Kernel</td>
+<td align="left">WARNING</td>
+<td align="left"><undefined></td>
+<td align="left">HLS Kernel Related</td>
+<td align="left">Accelerator.vec_mult.Kernel</td>
+<td align="left">The critical path in module 'vec_mult_Pipeline_mult_loop' consists of the following:
+	'fmul' operation 32 bit ('mul', <a href="file:///C:/Users/koryc/hwdesign/demos/vector_mult/vmult_vitis/hls_component\../src/vmult.cpp#line=49">vmult.cpp</a>) [33]  (2.566 ns)
+
 </td>
 <td align="left"><a href="http:///docs.xilinx.com/access/sources/dita/map?Doc_Version=2025.1%20English&url=ug1399-vitis-hls">Vitis HLS User Guide (UG1399)</a></td>
 </tr>
@@ -3495,18 +3554,7 @@ window.onload = function () { addSorting(); }
 <td align="left"><undefined></td>
 <td align="left">HLS Throughput Related</td>
 <td align="left">Accelerator.vec_mult.Throughput</td>
-<td align="left">Pipelining result : Target II = NA, Final II = 2, Depth = 14, loop 'input_loop'
-</td>
-<td align="left"><a href="http:///docs.xilinx.com/access/sources/dita/map?Doc_Version=2025.1%20English&url=ug1399-vitis-hls">Vitis HLS User Guide (UG1399)</a></td>
-</tr>
-<tr>
-<td align="left">5</td>
-<td align="left">Interface</td>
-<td align="left">ADVISORY</td>
-<td align="left"><undefined></td>
-<td align="left">HLS Interface Related</td>
-<td align="left">Accelerator.vec_mult.Interface</td>
-<td align="left">Design has inferred MAXI bursts and missed bursts, see Vitis HLS GUI synthesis summary report for detailed information.
+<td align="left">Pipelining result : Target II = NA, Final II = 3, Depth = 15, loop 'input_loop'
 </td>
 <td align="left"><a href="http:///docs.xilinx.com/access/sources/dita/map?Doc_Version=2025.1%20English&url=ug1399-vitis-hls">Vitis HLS User Guide (UG1399)</a></td>
 </tr>

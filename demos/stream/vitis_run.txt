@@ -1,8 +1,8 @@
 status
-passed
+subprocess_error
 
 message
-None
+Command 'cmd.exe /c "call "C:\Xilinx\2025.1\Vitis\bin\vitis-run.bat" "--mode" "hls" "--tcl" "run_hls_poly.tcl""' returned non-zero exit status 1.
 
 stderr
 
@@ -11,13 +11,13 @@ stdout
 
 ****** vitis-run v2025.1 (64-bit)
   **** SW Build 6137779 on 2025-05-21-18:10:16
-  **** Start of session at: Thu Apr  2 21:38:51 2026
+  **** Start of session at: Wed Apr 22 20:58:41 2026
     ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
     ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 
   **** HLS Build v2025.1 6135595
 
-Sourcing Tcl script 'c:/Users/sdran/Documents/repos/hwdesign/demos/stream/run_hls_poly.tcl'
+Sourcing Tcl script 'c:/Users/koryc/hwdesign/demos/stream/run_hls_poly.tcl'
 
 INFO: [HLS 200-1510] Running: open_project -reset poly_proj 
 
@@ -25,7 +25,7 @@ WARNING: [HLS 200-2182] The 'poly_proj' project will not automatically appear wi
 
 Resolution: For help on HLS 200-2182 see docs.xilinx.com/access/sources/dita/topic?Doc_Version=2025.1%20English&url=ug1448-hls-guidance&resourceid=200-2182.html
 
-INFO: [HLS 200-10] Opening and resetting solution 'C:/Users/sdran/Documents/repos/hwdesign/demos/stream/poly_proj'.
+INFO: [HLS 200-10] Opening and resetting solution 'C:/Users/koryc/hwdesign/demos/stream/poly_proj'.
 
 INFO: [HLS 200-1510] Running: set_top poly 
 
@@ -33,13 +33,17 @@ INFO: [HLS 200-1510] Running: add_files poly.cpp
 
 INFO: [HLS 200-10] Adding design file 'poly.cpp' to the project
 
+INFO: [HLS 200-1510] Running: add_files include/streamutils.cpp 
+
+INFO: [HLS 200-10] Adding design file 'include/streamutils.cpp' to the project
+
 INFO: [HLS 200-1510] Running: add_files -tb poly_tb.cpp 
 
 INFO: [HLS 200-10] Adding test bench file 'poly_tb.cpp' to the project
 
 INFO: [HLS 200-1510] Running: open_solution -reset solution1 
 
-INFO: [HLS 200-10] Creating and opening solution 'C:/Users/sdran/Documents/repos/hwdesign/demos/stream/poly_proj/solution1'.
+INFO: [HLS 200-10] Creating and opening solution 'C:/Users/koryc/hwdesign/demos/stream/poly_proj/solution1'.
 
 INFO: [HLS 200-10] Cleaning up the solution database.
 
@@ -64,10 +68,11 @@ INFO: [SIM 211-4] CSIM will launch CLANG as the compiler.
 INFO: [HLS 200-2036] Building debug C Simulation binaries
 
    Compiling ../../../../poly_tb.cpp in debug mode
-   Compiling ../../../../poly.cpp in debug mode
-   Generating csim.exe
+csim.mk:88: recipe for target 'obj/poly_tb.o' failed
+
 In file included from ../../../../poly_tb.cpp:6:
 In file included from ../../../../poly.hpp:4:
+In file included from C:/Xilinx/2025.1/Vitis/include/ap_axi_sdata.h:15:
 In file included from C:/Xilinx/2025.1/Vitis/include/ap_int.h:10:
 In file included from C:/Xilinx/2025.1/Vitis/include/etc/ap_common.h:677:
 In file included from C:/Xilinx/2025.1/Vitis/include/etc/ap_private.h:68:
@@ -81,513 +86,64 @@ C:/Xilinx/2025.1/Vitis/include/gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro red
 C:/Xilinx/2025.1/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
 #define __GMP_LIBGMP_DLL 1
         ^
-In file included from ../../../../poly_tb.cpp:6:
-In file included from ../../../../poly.hpp:13:
-../../../../include/coeff_array.h:20:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:23:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:60:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:66:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:83:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:89:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:106:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:112:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:130:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:136:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:153:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:160:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:182:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:192:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:216:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:227:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:253:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:261:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:282:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:292:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:315:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:325:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-In file included from ../../../../poly_tb.cpp:6:
-In file included from ../../../../poly.hpp:14:
-../../../../include/poly_cmd_hdr.h:24:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:27:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_cmd_hdr.h:54:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:65:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_cmd_hdr.h:91:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:106:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_cmd_hdr.h:135:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:151:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_cmd_hdr.h:182:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:192:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_cmd_hdr.h:215:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:229:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_cmd_hdr.h:256:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:270:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-In file included from ../../../../poly_tb.cpp:6:
-In file included from ../../../../poly.hpp:15:
-../../../../include/poly_resp_ftr.h:23:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:26:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_ftr.h:51:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:56:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_ftr.h:68:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:74:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_ftr.h:87:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:93:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_ftr.h:106:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:110:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_ftr.h:121:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:127:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_ftr.h:140:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:146:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-In file included from ../../../../poly_tb.cpp:6:
-In file included from ../../../../poly.hpp:16:
-../../../../include/poly_resp_hdr.h:20:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:23:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_hdr.h:46:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:50:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_hdr.h:61:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:66:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_hdr.h:78:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:83:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_hdr.h:95:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:98:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_hdr.h:108:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:113:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_hdr.h:125:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:130:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-In file included from ../../../../poly_tb.cpp:6:
-In file included from ../../../../poly.hpp:18:
-../../../../include/float32_array_utils.h:28:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    if constexpr (word_bw == 32) {
-       ^
-../../../../include/float32_array_utils.h:33:13: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    else if constexpr (word_bw == 64) {
+../../../../poly_tb.cpp:42:13: error: no matching member function for call to 'write_axi4_stream'
+    cmd_hdr.write_axi4_stream<WORD_BW>(in_stream, true);
+    ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../include/poly_cmd_hdr.h:215:10: note: candidate function template not viable: no known conversion from 'hls::stream<axis_word_t>' (aka 'stream<axis<ap_uint<WORD_BW>, 0, 0, 0>>') to 'hls::stream<streamutils::axi4s_word<32>> &' (aka 'stream<axis<ap_int<32ULL>, 0ULL, 0ULL, 0ULL, '8', false>> &') for 1st argument
+    void write_axi4_stream(hls::stream<streamutils::axi4s_word<word_bw>> &s, bool tlast = true) const {
+         ^
+../../../../poly_tb.cpp:45:5: error: no matching function for call to 'write_axi4_stream'
+    float32_array_utils::write_axi4_stream<WORD_BW>(in_stream, x, true, nsamp);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../include/float32_array_utils.h:375:13: note: candidate function template not viable: no known conversion from 'hls::stream<axis_word_t>' (aka 'stream<axis<ap_uint<WORD_BW>, 0, 0, 0>>') to 'hls::stream<streamutils::axi4s_word<32>> &' (aka 'stream<axis<ap_int<32ULL>, 0ULL, 0ULL, 0ULL, '8', false>> &') for 1st argument
+inline void write_axi4_stream(hls::stream<streamutils::axi4s_word<word_bw>>& s, const value_type* src, bool tlast = true, int len = pf<word_bw>()) {
             ^
-../../../../include/float32_array_utils.h:53:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    if constexpr (word_bw == 32) {
-       ^
-../../../../include/float32_array_utils.h:58:13: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    else if constexpr (word_bw == 64) {
+../../../../poly_tb.cpp:55:14: error: no matching member function for call to 'read_axi4_stream'
+    resp_hdr.read_axi4_stream<WORD_BW>(out_stream, resp_hdr_tlast);
+    ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../include/poly_resp_hdr.h:220:10: note: candidate function template not viable: no known conversion from 'hls::stream<axis_word_t>' (aka 'stream<axis<ap_uint<WORD_BW>, 0, 0, 0>>') to 'hls::stream<streamutils::axi4s_word<32>> &' (aka 'stream<axis<ap_int<32ULL>, 0ULL, 0ULL, 0ULL, '8', false>> &') for 1st argument
+    void read_axi4_stream(hls::stream<streamutils::axi4s_word<word_bw>> &s, streamutils::tlast_status &tl) {
+         ^
+../../../../include/poly_resp_hdr.h:225:10: note: candidate function template not viable: requires single argument 's', but 2 arguments were provided
+    void read_axi4_stream(hls::stream<streamutils::axi4s_word<word_bw>> &s) {
+         ^
+../../../../poly_tb.cpp:69:5: error: no matching function for call to 'read_axi4_stream'
+    float32_array_utils::read_axi4_stream<WORD_BW>(out_stream, y_dut, samp_out_tlast, nsamp);
+    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../include/float32_array_utils.h:342:13: note: candidate function template not viable: no known conversion from 'hls::stream<axis_word_t>' (aka 'stream<axis<ap_uint<WORD_BW>, 0, 0, 0>>') to 'hls::stream<streamutils::axi4s_word<32>> &' (aka 'stream<axis<ap_int<32ULL>, 0ULL, 0ULL, 0ULL, '8', false>> &') for 1st argument
+inline void read_axi4_stream(hls::stream<streamutils::axi4s_word<word_bw>>& s, value_type* dst, streamutils::tlast_status& tl, int len) {
             ^
-../../../../include/float32_array_utils.h:79:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    if constexpr (word_bw == 32) {
-       ^
-../../../../include/float32_array_utils.h:85:13: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    else if constexpr (word_bw == 64) {
+../../../../include/float32_array_utils.h:349:13: note: candidate function template not viable: no known conversion from 'hls::stream<axis_word_t>' (aka 'stream<axis<ap_uint<WORD_BW>, 0, 0, 0>>') to 'hls::stream<streamutils::axi4s_word<32>> &' (aka 'stream<axis<ap_int<32ULL>, 0ULL, 0ULL, 0ULL, '8', false>> &') for 1st argument
+inline void read_axi4_stream(hls::stream<streamutils::axi4s_word<word_bw>>& s, value_type* dst, int& nread, int len) {
             ^
-../../../../include/float32_array_utils.h:102:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    if constexpr (word_bw == 32) {
-       ^
-../../../../include/float32_array_utils.h:108:13: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    else if constexpr (word_bw == 64) {
+../../../../include/float32_array_utils.h:356:13: note: candidate function template not viable: requires 3 arguments, but 4 were provided
+inline void read_axi4_stream(hls::stream<streamutils::axi4s_word<word_bw>>& s, value_type* dst, int len) {
             ^
-../../../../include/float32_array_utils.h:125:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    if constexpr (word_bw == 32) {
-       ^
-../../../../include/float32_array_utils.h:131:13: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    else if constexpr (word_bw == 64) {
+../../../../include/float32_array_utils.h:315:13: note: candidate function template not viable: requires 5 arguments, but 4 were provided
+inline void read_axi4_stream(hls::stream<streamutils::axi4s_word<word_bw>>& s, value_type* dst, streamutils::tlast_status& tl, int& nread, int len) {
             ^
-../../../../include/float32_array_utils.h:149:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    if constexpr (word_bw == 32) {
-       ^
-../../../../include/float32_array_utils.h:155:13: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    else if constexpr (word_bw == 64) {
-            ^
-77 warnings generated.
-In file included from ../../../../poly.cpp:1:
-In file included from ../../../../poly.hpp:4:
-In file included from C:/Xilinx/2025.1/Vitis/include/ap_int.h:10:
-In file included from C:/Xilinx/2025.1/Vitis/include/etc/ap_common.h:677:
-In file included from C:/Xilinx/2025.1/Vitis/include/etc/ap_private.h:68:
-In file included from C:/Xilinx/2025.1/Vitis/include/hls_half.h:26:
-In file included from C:/Xilinx/2025.1/Vitis/include/etc/hls_half_fpo.h:19:
-In file included from C:/Xilinx/2025.1/Vitis/include/hls_fpo.h:140:
-In file included from C:/Xilinx/2025.1/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:150:
-C:/Xilinx/2025.1/Vitis/include/gmp.h:58:9: warning: '__GMP_LIBGMP_DLL' macro redefined [-Wmacro-redefined]
-#define __GMP_LIBGMP_DLL  0
-        ^
-C:/Xilinx/2025.1/Vitis/include/floating_point_v7_1_bitacc_cmodel.h:142:9: note: previous definition is here
-#define __GMP_LIBGMP_DLL 1
-        ^
-In file included from ../../../../poly.cpp:1:
-In file included from ../../../../poly.hpp:13:
-../../../../include/coeff_array.h:20:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:23:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:60:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:66:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:83:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:89:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:106:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:112:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:130:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:136:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:153:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:160:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:182:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:192:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:216:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:227:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:253:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:261:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:282:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:292:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/coeff_array.h:315:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/coeff_array.h:325:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-In file included from ../../../../poly.cpp:1:
-In file included from ../../../../poly.hpp:14:
-../../../../include/poly_cmd_hdr.h:24:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:27:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_cmd_hdr.h:54:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:65:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_cmd_hdr.h:91:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:106:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_cmd_hdr.h:135:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:151:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_cmd_hdr.h:182:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:192:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_cmd_hdr.h:215:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:229:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_cmd_hdr.h:256:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_cmd_hdr.h:270:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-In file included from ../../../../poly.cpp:1:
-In file included from ../../../../poly.hpp:15:
-../../../../include/poly_resp_ftr.h:23:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:26:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_ftr.h:51:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:56:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_ftr.h:68:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:74:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_ftr.h:87:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:93:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_ftr.h:106:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:110:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_ftr.h:121:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:127:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_ftr.h:140:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_ftr.h:146:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-In file included from ../../../../poly.cpp:1:
-In file included from ../../../../poly.hpp:16:
-../../../../include/poly_resp_hdr.h:20:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:23:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_hdr.h:46:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:50:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_hdr.h:61:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:66:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_hdr.h:78:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:83:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_hdr.h:95:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:98:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_hdr.h:108:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:113:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-../../../../include/poly_resp_hdr.h:125:12: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        if constexpr (word_bw == 32) {
-           ^
-../../../../include/poly_resp_hdr.h:130:17: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-        else if constexpr (word_bw == 64) {
-                ^
-In file included from ../../../../poly.cpp:1:
-In file included from ../../../../poly.hpp:18:
-../../../../include/float32_array_utils.h:28:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    if constexpr (word_bw == 32) {
-       ^
-../../../../include/float32_array_utils.h:33:13: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    else if constexpr (word_bw == 64) {
-            ^
-../../../../include/float32_array_utils.h:53:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    if constexpr (word_bw == 32) {
-       ^
-../../../../include/float32_array_utils.h:58:13: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    else if constexpr (word_bw == 64) {
-            ^
-../../../../include/float32_array_utils.h:79:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    if constexpr (word_bw == 32) {
-       ^
-../../../../include/float32_array_utils.h:85:13: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    else if constexpr (word_bw == 64) {
-            ^
-../../../../include/float32_array_utils.h:102:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    if constexpr (word_bw == 32) {
-       ^
-../../../../include/float32_array_utils.h:108:13: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    else if constexpr (word_bw == 64) {
-            ^
-../../../../include/float32_array_utils.h:125:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    if constexpr (word_bw == 32) {
-       ^
-../../../../include/float32_array_utils.h:131:13: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    else if constexpr (word_bw == 64) {
-            ^
-../../../../include/float32_array_utils.h:149:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    if constexpr (word_bw == 32) {
-       ^
-../../../../include/float32_array_utils.h:155:13: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
-    else if constexpr (word_bw == 64) {
-            ^
-77 warnings generated.
-Mean Absolute Error (MAE): 2.38419e-08
-
-INFO [HLS SIM]: The maximum depth reached by any hls::stream() instance in the design is 16
-
-INFO: [SIM 211-1] CSim done with 0 errors.
+../../../../poly_tb.cpp:78:14: error: no matching member function for call to 'read_axi4_stream'
+    resp_ftr.read_axi4_stream<WORD_BW>(out_stream, resp_ftr_tlast);
+    ~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+../../../../include/poly_resp_ftr.h:245:10: note: candidate function template not viable: no known conversion from 'hls::stream<axis_word_t>' (aka 'stream<axis<ap_uint<WORD_BW>, 0, 0, 0>>') to 'hls::stream<streamutils::axi4s_word<32>> &' (aka 'stream<axis<ap_int<32ULL>, 0ULL, 0ULL, 0ULL, '8', false>> &') for 1st argument
+    void read_axi4_stream(hls::stream<streamutils::axi4s_word<word_bw>> &s, streamutils::tlast_status &tl) {
+         ^
+../../../../include/poly_resp_ftr.h:250:10: note: candidate function template not viable: requires single argument 's', but 2 arguments were provided
+    void read_axi4_stream(hls::stream<streamutils::axi4s_word<word_bw>> &s) {
+         ^
+1 warning and 5 errors generated.
+make: *** [obj/poly_tb.o] Error 1
+ERROR: [SIM 211-100] 'csim_design' failed: compilation error(s).
 
 INFO: [SIM 211-3] *************** CSIM finish ***************
 
-INFO: [HLS 200-2161] Finished Command csim_design Elapsed time: 00:00:04; Allocated memory: 0.855 MB.
+INFO: [HLS 200-2161] Finished Command csim_design Elapsed time: 00:00:02; Allocated memory: 0.953 MB.
 
-SUCCESS:  poly C-Simulation passed.
+FAIL:  poly C-Simulation failed.
 
-INFO: [HLS 200-112] Total CPU user time: 1 seconds. Total CPU system time: 1 seconds. Total elapsed time: 6.095 seconds; peak allocated memory: 148.070 MB.
+4
 
-INFO: [vitis-run 60-791] Total elapsed time: 0h 0m 7s
+INFO: [HLS 200-112] Total CPU user time: 1 seconds. Total CPU system time: 2 seconds. Total elapsed time: 3.94 seconds; peak allocated memory: 154.062 MB.
+
 INFO: [vitis-run 60-1662] Stopping dispatch session having empty uuid.
 

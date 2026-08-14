@@ -41,5 +41,6 @@ csynth_design
 # RTL Co-Simulation
 # Pass argument "rtl" to testbench via cosim.argv
 # Comment out if you want to run C synthesis only.
+# Add -trace_level to generate waveform files (VCD)
 # ------------------------------------------------------------
-cosim_design -argv "rtl"
+cosim_design -argv "rtl" -trace_level all

@@ -62,7 +62,10 @@ def main():
 
     # Build sim_cmd based on whether a tcl file is provided
     if args.t is not None:
-        sim_cmd = f"xsim {top}_sim -t {args.t} -log logs/xsim.log"
+        # Adjust TCL path to be relative to sim directory
+        # Use forward slashes for xsim compatibility on Windows
+        tcl_path = (Path("..") / args.t).as_posix()
+        sim_cmd = f"xsim {top}_sim -t {tcl_path} -log logs/xsim.log"
     else:
         sim_cmd = f"xsim {top}_sim --runall -log logs/xsim.log"
 

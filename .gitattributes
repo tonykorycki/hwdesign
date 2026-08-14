@@ -1,0 +1,20 @@
+* text=auto
+
+# Text — normalize to LF in the repo
+*.py    text eol=lf
+*.sv    text eol=lf
+*.v     text eol=lf
+*.h     text eol=lf
+*.cpp   text eol=lf
+*.tcl   text eol=lf
+*.md    text eol=lf
+*.ipynb text eol=lf
+*.hwh   text eol=lf
+*.vcd   text eol=lf
+
+# Binary — never touch
+*.pptx  binary
+*.pdf   binary
+*.bit   binary
+*.png   binary
+*.jpg   binary
